@@ -5,6 +5,7 @@ from typing import Any
 
 from airflow.models import BaseOperator
 
+
 # The operator below is introduced in chapter 09 of the book Data Pipelines with Apache Airflow
 class JsonToCsvOperator(BaseOperator):
     def __init__(self, input_path: Path, output_path: Path, **kwargs):
