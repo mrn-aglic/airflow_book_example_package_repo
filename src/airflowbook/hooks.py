@@ -45,6 +45,14 @@ class MovielensHook(BaseHook):
         self._session = None
         self._base_url = None
 
+    ### Implemented for the use of Chapter09 where hook is used as a context manager
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.close()
+    ###
+
     def get_ratings(self, start_date=None, end_date=None, batch_size=100):
         yield from self._get_with_pagination(
             endpoint="/ratings",
