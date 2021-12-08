@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from airflow.models import BaseOperator
-from airflow.providers.postgres.providers.hooks import PostgresHook
+from airflow.providers.postgres.hooks.postgres import PostgresHook
 
 from ..hooks import MovielensHook
 
