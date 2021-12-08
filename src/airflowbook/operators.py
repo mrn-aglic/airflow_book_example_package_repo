@@ -1,5 +1,4 @@
 import json
-from collections import defaultdict, Counter
 from pathlib import Path
 from typing import Any
 
@@ -31,12 +30,12 @@ class MovielensFetchRatingsOperators(BaseOperator):
     template_fields = ["_start_date", "_end_date", "_output_path"]
 
     def __init__(
-            self,
-            conn_id,
-            output_path,
-            start_date="{{ds}}",
-            end_date="{{next_ds}}",
-            **kwargs,
+        self,
+        conn_id,
+        output_path,
+        start_date="{{ds}}",
+        end_date="{{next_ds}}",
+        **kwargs,
     ):
         super().__init__(**kwargs)
 

@@ -51,6 +51,7 @@ class MovielensHook(BaseHook):
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.close()
+
     ###
 
     def get_ratings(self, start_date=None, end_date=None, batch_size=100):
