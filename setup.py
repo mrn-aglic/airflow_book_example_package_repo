@@ -2,7 +2,7 @@
 
 import setuptools
 
-requirements = ["apache-airflow", "requests"]
+requirements = ["apache-airflow", "apache-airflow-providers-postgres", "requests"]
 
 extra_requirements = {"dev": ["pytest"]}
 
