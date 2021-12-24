@@ -143,8 +143,6 @@ class MovielensToPostgresOperator(BaseOperator):
         **kwargs,
     ):
         super().__init__(**kwargs)
-        print("HELLO INIT")
-        print(f"{start_date}, {end_date}")
         self._movielens_conn_id = movielens_conn_id
         self._start_date = start_date
         self._end_date = end_date
@@ -152,13 +150,8 @@ class MovielensToPostgresOperator(BaseOperator):
         self._insert_query = insert_query
 
     def execute(self, context: Any):
-        print("shit")
         with MovielensHook(self._movielens_conn_id) as movie_hook:
-            print(self._start_date)
-            print(self._end_date)
             ratings = list(movie_hook.get_ratings(self._start_date, self._end_date))
-
-            print("Hello world")
 
             postgres_hook = PostgresHook(postgres_conn_id=self._postgres_conn_id)
 
@@ -168,6 +161,5 @@ class MovielensToPostgresOperator(BaseOperator):
                 )
                 for rating in ratings
             ]
-            print(f"_________________________{insert_queries}")
 
             postgres_hook.run(insert_queries)
